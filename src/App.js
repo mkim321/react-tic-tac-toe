@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useState } from "react";
 
 function Square({ value, onSquareClick }) {
   return (
@@ -58,8 +58,8 @@ export default function Game() {
   const [currentMove, setCurrentMove] = useState(0);
   const currentSquares = history[currentMove];
 
-  function handlePlay(nextSuqares) {
-    const nextHistory = [...history.slice(0, currentMove + 1), nextSuqares];
+  function handlePlay(nextSquares) {
+    const nextHistory = [...history.slice(0, currentMove + 1, nextSquares)];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
     setXIsNext(!xIsNext);
@@ -105,7 +105,7 @@ function calculateWinner(squares) {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
